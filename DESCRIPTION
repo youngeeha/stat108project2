@@ -1,0 +1,23 @@
+Package: MWMouseWeight
+Type: Package
+Title: This package analyses and visualized specifically mice weight data
+Version: 0.1.0
+Maintainer: The package maintainers <kaiali@college.harvard.edu> <graceyoon@college.harvard.edu> <seoyoungha@college.harvard.edu>
+Description: MW (mouse mass)  is an R package designed to streamline the data cleaning, preparation, and initial analysis process for experimental datasets, which in this case particularly involves mice body weight and treatment outcomes. This package addresses common data inconsistencies, enables efficient wrangling, and provides key visualizations and summaries for further exploration.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 3.5)
+RoxygenNote: 7.3.2
+Authors@R: c(
+    person("Kaia", "Li", , "kaiali@college.harvard.edu", role = "ctb"),
+    person("SeoYoung", "Ha", , "seoyoungha@college.harvard.edu", role = "ctb"),
+    person("Grace", "Yoon", , "graceyoon@college.harvard.edu", role = "cre")
+  )
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr

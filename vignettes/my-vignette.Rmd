@@ -1,0 +1,35 @@
+---
+title: "my-vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Let's start by looking at our visualization function. Here, by calling the function, you can plot the change in body weight for each of the mice included in the study over the course of the three checkpoints.
+
+```{r setup}
+library(MWMouseWeight)
+plot_mouse_weight()
+```
+Next, let's consider gender mismatches. As noted in the original dataset, it was observed that there were labeling issues that extended to both column names and the data itself. One particular area where there was data issues was the consistency in gender among mice. Researches may have inferred a gender of a mouse, only to find it be different later. Our function highlights any discrepancies noted.
+```{r}
+find_gender_mismatches(merged_data)
+```
+Next, let's consider our statistical summaries function, which provides us wiht a table. Here, we can observe statistical summaries of the body weights of the mice over the three checkpoints as well as compare the bodyweight groups against each other.
+```{r}
+stat_summary()
+```
+
+Lastly, we have our outlier flagging function, which adds information on outliers to our dataframe:
+```{r}
+flag_outliers()
+```
