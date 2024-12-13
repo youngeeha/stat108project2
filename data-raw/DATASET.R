@@ -10,6 +10,7 @@ stringr::str_replace
 birth_data <- readxl::read_excel("mousedata.xlsx", sheet = "Birth")
 bodyweight_data <- readxl::read_excel("mousedata.xlsx", sheet = "Body Weight")
 outcome_data <- readxl::read_excel("mousedata.xlsx", sheet = "Outcome")
+female_data <- read.csv("femaleMiceWeights.csv")
 
 # Fix typos in the Treatment column
 birth_data <- birth_data |>
@@ -35,25 +36,25 @@ bodyweight_data <- bodyweight_data |>
   ))
 
 # fixing naming typos
-colnames(bodyweight_data) <- str_replace_all(colnames(bodyweight_data), "\\s+", "_")
-colnames(outcome_data) <- str_replace_all(colnames(outcome_data), "\\s+", "_")
+colnames(bodyweight_data) <- stringr::str_replace_all(colnames(bodyweight_data), "\\s+", "_")
+colnames(outcome_data) <- stringr::str_replace_all(colnames(outcome_data), "\\s+", "_")
 
 outcome_data <- outcome_data |>
-  rename(ID = Subject_ID)
+  dplyr::rename(ID = Subject_ID)
 
 outcome_data <- outcome_data |>
-  rename(Date_Outcome_1 = Date_Ourcome_1)
+  dplyr::rename(Date_Outcome_1 = Date_Ourcome_1)
 
 bodyweight_data <- bodyweight_data |>
-  rename(Date_Body_Weight_2 = Date_Body_Weight_2...5)
+  dplyr::rename(Date_Body_Weight_2 = Date_Body_Weight_2...5)
 
 bodyweight_data <- bodyweight_data |>
-  rename(Date_Body_Weight_3 = Date_Body_Weight_2...7)
+  dplyr::rename(Date_Body_Weight_3 = Date_Body_Weight_2...7)
 
 
 merged_data <- birth_data |>
-  full_join(bodyweight_data, by = "ID") |>
-  full_join(outcome_data, by = "ID")
+  dplyr::full_join(bodyweight_data, by = "ID") |>
+  dplyr::full_join(outcome_data, by = "ID")
 
 # Removing mice with >20% bodyweight loss or dead ----------------------------
 body_weight_columns <- c("Body_Weight_1", "Body_Weight_2", "Body_Weight_3")
@@ -79,3 +80,4 @@ usethis::use_data(birth_data, overwrite = TRUE)
 usethis::use_data(bodyweight_data, overwrite = TRUE)
 usethis::use_data(outcome_data, overwrite = TRUE)
 usethis::use_data(merged_data, overwrite = FALSE)
+usethis::use_data(female_data, overwrite = TRUE)
