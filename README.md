@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 <!-- badges: end -->
-<img src="hex/man/MW.png" align="right" width="200"/>
+<img src="man/MW.png" align="right" width="200"/>
 MWMouseWeight is an R package designed to streamline the data cleaning,
 preparation, and initial analysis process for experimental datasets,
 which in this case particularly involves mice body weight and treatment
