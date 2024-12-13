@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 <!-- badges: end -->
-<img src="man/MW.png" align="right" width="200"/>
+
 MWMouseWeight is an R package designed to streamline the data cleaning,
 preparation, and initial analysis process for experimental datasets,
 which in this case particularly involves mice body weight and treatment
@@ -52,8 +52,6 @@ the most relavent for the functionality of the dataset.
 
 The fourth dataset is ‘merged_data’, which is all of these three
 datasets joined on mouse ID.
-
-The fifth and final dataset we utilised is called 'miceweights.' We thank Evagoras Georgiou for providing this dataset and the Kaggle platform for hosting it. Miceweights contains data related to the weights of mice, designed for statistical analysis and modeling purposes. Within this dataset includes feeding types, either standard chow to hf, high fat, diets. This dataset can be used to explore trends, relationships, and patterns in mouse weights. There is also no license on this particular datset making it accessible to the public.
 
 ## Installation
 

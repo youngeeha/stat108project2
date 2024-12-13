@@ -1,0 +1,34 @@
+---
+title: "my-vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Let's start by looking at our visualization function. Here, by calling the function, you can plot the change in body weight for each of the mice included in the study over the course of the three checkpoints. The plot_mouse_weight function creates a ggplot that shows the change in body weight for each mouse over three checkpoints. This visualization helps identify trends, anomalies, or sudden weight changes that could indicate potential data entry issues or significant biological events. This function produces an interactive plot where you can hover over data points to see the mouse ID, treatment group, and sex. This helps in identifying potential issues like extreme changes in body weight.
+
+```{r setup}
+library(MWMouseWeight)
+plot_mouse_weight()
+```
+Next, let's consider gender mismatches. As noted in the original dataset, it was observed that there were labeling issues that extended to both column names and the data itself. One particular area where there was data issues was the consistency in gender among mice. Researches may have inferred a gender of a mouse, only to find it be different later. Our function highlights any discrepancies noted. If mismatches are found, the function returns a list of IDs where the sex does not match the inferred sex. If no mismatches are found, it prints a message indicating no mismatches.
+```{r}
+find_gender_mismatches(merged_data)
+```
+Next, let's consider our statistical summaries function, which provides us with a table. Our default dataset is female data. Here, we can observe statistical summaries of the body weights of the mice by diet which includes summary statistics by diet and a paired t-test. It also works for merged data which over the three checkpoints as well as compare the bodyweight groups against each other. It calculates summary statistics for each checkpoint, performs a paired t-test to compare body weights between the first and third checkpoints, and conducts an ANOVA to compare body weights across all checkpoints. 
+```{r}
+stat_summary()
+```
+Lastly, we have our outlier flagging function, which adds information on outliers to our dataframe. The flag_outliers function identifies outliers in the body weight measurements using the Interquartile Range (IQR). It adds new columns to the dataset to indicate whether each body weight measurement is an outlier.
+```{r}
+flag_outliers()
+```
